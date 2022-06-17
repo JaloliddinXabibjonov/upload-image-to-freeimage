@@ -7,4 +7,11 @@ import lombok.Setter;
 @Setter
 public class FilePath {
     private String path;
+
+    public FilePath() {
+    }
+
+    public FilePath(String path) {
+        this.path = path;
+    }
 }
