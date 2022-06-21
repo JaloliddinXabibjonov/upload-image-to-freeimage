@@ -1,13 +1,12 @@
-package UploadPhoto.upload.payload;
+package uz.devops.freeimage.payload;
 
 import lombok.Data;
 
 @Data
-public class ImageObject {
+public class Thumb {
     String filename;
     String name;
     String mime;
     String extension;
     String url;
-    int size;
 }

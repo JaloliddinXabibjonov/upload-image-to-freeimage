@@ -1,10 +1,10 @@
-package UploadPhoto.upload.config;
+package uz.devops.freeimage;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("UploadPhoto.upload")
+@ComponentScan("uz.devops.freeimage")
 public class TestConfig {
 
 }

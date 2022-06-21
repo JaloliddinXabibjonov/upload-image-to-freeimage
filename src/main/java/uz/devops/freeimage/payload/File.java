@@ -1,4 +1,4 @@
-package UploadPhoto.upload.payload;
+package uz.devops.freeimage.payload;
 
 import lombok.Data;
 
