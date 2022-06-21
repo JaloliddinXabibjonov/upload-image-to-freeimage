@@ -30,8 +30,12 @@ public class UploadService {
    private final UploadProperties uploadProperties;
 
     public List<ResponseDto> uploadPhoto(MultipartFile multipartFile) throws IOException {
-        byte[] bytes = multipartFile.getBytes();
-        return Collections.singletonList(uploadOneImage(bytes));
+        if (multipartFile!=null&&
+            multipartFile.getContentType().startsWith("image")) {
+            byte[] bytes = multipartFile.getBytes();
+            return Collections.singletonList(uploadOneImage(bytes));
+        }
+        return null;
     }
 
 
