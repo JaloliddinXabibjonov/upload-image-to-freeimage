@@ -29,13 +29,16 @@ public class UploadService {
     HttpHeaders headers=new HttpHeaders();
    private final UploadProperties uploadProperties;
 
-    public List<ResponseDto> uploadPhoto(MultipartFile multipartFile) throws IOException {
+    public ApiResponse uploadPhoto(MultipartFile multipartFile) throws IOException {
+        ApiResponse apiResponse=new ApiResponse();
         if (multipartFile!=null&&
             multipartFile.getContentType().startsWith("image")) {
             byte[] bytes = multipartFile.getBytes();
-            return Collections.singletonList(uploadOneImage(bytes));
+            apiResponse.setMessage("Image saved");
+            apiResponse.setResponseDto(uploadOneImage(bytes));
+            return apiResponse;
         }
-        return null;
+        return new ApiResponse("Sending file type isn't image", null);
     }
 
 
