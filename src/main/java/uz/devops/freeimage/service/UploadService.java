@@ -31,8 +31,7 @@ public class UploadService {
 
     public ApiResponse uploadPhoto(MultipartFile multipartFile) throws IOException {
         ApiResponse apiResponse=new ApiResponse();
-        if (multipartFile!=null&&
-            multipartFile.getContentType().startsWith("image")) {
+        if (multipartFile!=null&&multipartFile.getContentType().startsWith("image")) {
             byte[] bytes = multipartFile.getBytes();
             apiResponse.setMessage("Image saved");
             apiResponse.setResponseDto(uploadOneImage(bytes));
@@ -45,6 +44,7 @@ public class UploadService {
 
     public List<ApiResponse> uploadPhoto(String uploadFolderUrl) throws IOException {
         List<ApiResponse> apiResponseList = new ArrayList<>();
+        ApiResponse apiResponse=new ApiResponse();
         if (uploadFolderUrl != null && new File(uploadFolderUrl).exists() && new File(uploadFolderUrl).isDirectory()) {
             if (new File(uploadFolderUrl).listFiles().length != 0) {
                 File[] listFiles = new File(uploadFolderUrl).listFiles();
@@ -52,16 +52,21 @@ public class UploadService {
                     if (file.isFile() && Files.probeContentType(file.toPath()).startsWith("image")) {
                         byte[] bytes = Files.readAllBytes(file.toPath());
                         ResponseDto responseDto = uploadOneImage(bytes);
-                        apiResponseList.add(new ApiResponse("Image saved", responseDto));
+                        apiResponse.setMessage("Image saved");
+                        apiResponse.setResponseDto(responseDto);
+                        apiResponseList.add(apiResponse);
                     } else {
-                        apiResponseList.add(new ApiResponse("This file type isn't image", null));
+                        apiResponse.setMessage("This file type isn't image");
+                        apiResponseList.add(apiResponse);
                     }
                 }
             } else {
-                apiResponseList.add(new ApiResponse("Folder is empty", null));
+                apiResponse.setMessage("Folder is empty");
+                apiResponseList.add(apiResponse);
             }
         } else {
-            apiResponseList.add(new ApiResponse("Folder not found", null));
+            apiResponse.setMessage("Folder not found");
+            apiResponseList.add(apiResponse);
         }
         return apiResponseList;
     }
