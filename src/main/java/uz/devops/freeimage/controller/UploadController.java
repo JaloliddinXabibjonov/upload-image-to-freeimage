@@ -23,7 +23,7 @@ public class UploadController {
     private UploadProperties uploadProperties;
 
     @PostMapping("/fromMultipartFile")
-    public List<ResponseDto> upload(@RequestPart MultipartFile file) throws IOException {
+    public ApiResponse upload(@RequestPart MultipartFile file) throws IOException {
         return uploadService.uploadPhoto(file);
     }
 
