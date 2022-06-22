@@ -38,7 +38,8 @@ public class UploadService {
             apiResponse.setResponseDto(uploadOneImage(bytes));
             return apiResponse;
         }
-        return new ApiResponse("Sending file type isn't image", null);
+        apiResponse.setMessage("Sending file type isn't image");
+        return apiResponse;
     }
 
 
