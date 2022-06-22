@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -45,9 +44,10 @@ public class UploadService {
     public List<ApiResponse> uploadPhoto(String uploadFolderUrl) throws IOException {
         List<ApiResponse> apiResponseList = new ArrayList<>();
         ApiResponse apiResponse=new ApiResponse();
-        if (uploadFolderUrl != null && new File(uploadFolderUrl).exists() && new File(uploadFolderUrl).isDirectory()) {
-            if (new File(uploadFolderUrl).listFiles().length != 0) {
-                File[] listFiles = new File(uploadFolderUrl).listFiles();
+        File file1 = new File(uploadFolderUrl);
+        if (uploadFolderUrl != null && file1.exists() && file1.isDirectory()) {
+            if (file1.listFiles().length != 0) {
+                File[] listFiles = file1.listFiles();
                 for (File file : listFiles) {
                     if (file.isFile() && Files.probeContentType(file.toPath()).startsWith("image")) {
                         byte[] bytes = Files.readAllBytes(file.toPath());
