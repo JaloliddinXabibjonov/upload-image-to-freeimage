@@ -2,6 +2,6 @@ upload:
     url: https://freeimage.host/api/1/upload
     imageKey: 6d207e02198a847aa98d0a2a901485a5
 
-    imageFolderUrl: D:/projects/Upload/images
-    otherFilesFolderUrl: D:/OtherFiles
-    emptyFolderUrl: D:\Empty
+    imageFolderUrl: ./uploads/images
+    otherFilesFolderUrl: ./uploads/OtherFiles
+    emptyFolderUrl: ./uploads/Empty
