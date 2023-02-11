@@ -72,7 +72,7 @@ public class UploadService {
     }
 
 
-    public ResponseDto uploadOneImage(byte[] bytes) {
+    private ResponseDto uploadOneImage(byte[] bytes) {
         String s = Base64.getEncoder().encodeToString(bytes);
         LinkedMultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("source", s);
