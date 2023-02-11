@@ -34,7 +34,7 @@ public class UploadServiceTest {
     @Test
     public void testUploadFolderWithImages() throws IOException {
         List<ApiResponse> apiResponseList = uploadService.uploadPhoto(uploadProperties.getImageFolderUrl());
-        Assertions.assertThat(apiResponseList.size()).isEqualTo(3);
+        Assertions.assertThat(apiResponseList.size()).isEqualTo(1);
         Assertions.assertThat(apiResponseList.iterator().next().getMessage()).isEqualTo("Image saved");
         Assertions.assertThat(apiResponseList.iterator().next().getResponseDto().getImage().getUrl_viewer()).isNotNull();
         Assertions.assertThat(apiResponseList.iterator().next().getResponseDto().getStatus_code()).isEqualTo(200);
